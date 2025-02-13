@@ -1,5 +1,6 @@
 package com.proFightingFicAcademy.model;
 
+import com.proFightingFicAcademy.dto.AcademyDTO;
 import jakarta.persistence.*;
 
 
@@ -10,7 +11,7 @@ public class Academy{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "academy_id")
-    private int id;
+    private Integer id;
 
     @Column(name = "academy_address")
     private String address;
@@ -35,8 +36,8 @@ public class Academy{
     }
 
     //getters and setters
-    public int getId() {return id;}
-    public void setId(int id) {this.id = id;}
+    public Integer getId() {return id;}
+    public void setId(Integer id) {this.id = id;}
 
     public String getAddress() {return address;}
     public void setAddress(String address) {this.address = address;}
@@ -53,4 +54,16 @@ public class Academy{
     public State getState() {return state;}
     public void setState(State state) {this.state = state;}
 
+    //method
+    public static Academy from(AcademyDTO academyDTO){
+        Academy academy = new Academy();
+
+        academy.setId(academyDTO.getId());
+        academy.setAddress(academyDTO.getAddress());
+        academy.setAreaInSquareMeters(academyDTO.getAreaInSquareMeters());
+        academy.setCreatedAt(academyDTO.getCreatedAt());
+        academy.setUpdatedAt(academyDTO.getUpdatedAt());
+
+        return academy;
+    }
 }
