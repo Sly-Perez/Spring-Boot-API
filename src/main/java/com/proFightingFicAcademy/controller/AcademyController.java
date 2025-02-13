@@ -85,5 +85,15 @@ public class AcademyController {
         }
     }
 
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteById(@PathVariable("id") int id){
+        try{
+            Academy deletedAcademy = academyService.deleteById(id);
+            return new ResponseEntity<>(AcademyDTO.from(deletedAcademy), HttpStatus.OK);
+        } catch (ResourceNotFoundException e) {
+            return ResponseHandler.responseBuilder(e.getMessage(), HttpStatus.NOT_FOUND);
+        } catch (Exception exc){
+            return ResponseHandler.responseBuilder("Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
