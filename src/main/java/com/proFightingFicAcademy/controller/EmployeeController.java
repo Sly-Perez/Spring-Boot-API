@@ -74,7 +74,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteById(int id){
+    public ResponseEntity<Object> deleteById(@PathVariable("id") int id){
         try{
             Employee deletedEmployee = employeeService.deleteById(id);
             return new ResponseEntity<>(EmployeeDTO.from(deletedEmployee), HttpStatus.OK);
