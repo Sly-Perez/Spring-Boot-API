@@ -9,4 +9,6 @@ public interface AcademyService {
     //we'll get Academies with state.id = 1: "Active"
     List<Academy> getAll();
     Academy getById(int id);
+    Academy add(Academy academy);
+    Academy updateById(int id, Academy academy);
 }
