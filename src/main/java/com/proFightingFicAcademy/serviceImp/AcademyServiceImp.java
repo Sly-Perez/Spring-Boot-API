@@ -10,7 +10,7 @@ import com.proFightingFicAcademy.service.AcademyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -76,6 +76,18 @@ public class AcademyServiceImp implements AcademyService {
         academyRepository.save(updatedAcademy);
 
         return updatedAcademy;
+    }
+
+    @Override
+    public Academy deleteById(int id) {
+        Academy deletedAcademy = this.getById(id);
+
+        State inactiveState = stateService.getById(2);
+        deletedAcademy.setState(inactiveState);
+
+        academyRepository.save(deletedAcademy);
+
+        return deletedAcademy;
     }
 
 
