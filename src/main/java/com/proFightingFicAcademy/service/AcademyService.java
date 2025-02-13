@@ -11,4 +11,5 @@ public interface AcademyService {
     Academy getById(int id);
     Academy add(Academy academy);
     Academy updateById(int id, Academy academy);
+    Academy deleteById(int id);
 }
